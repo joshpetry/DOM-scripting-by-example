@@ -10,10 +10,13 @@ const createLI = (textInput) => {
   const checkbox = document.createElement('INPUT');
   checkbox.type = 'checkbox';
   label.appendChild(checkbox);
-  li.appendChild(label);
-  const button = document.createElement('BUTTON'); 
-  button.textContent = 'remove';
-  li.appendChild(button);
+  li.appendChild(label);  
+  const editButton = document.createElement('BUTTON'); 
+  editButton.textContent = 'Edit';
+  li.appendChild(editButton);
+  const removeButton = document.createElement('BUTTON'); 
+  removeButton.textContent = 'Remove';
+  li.appendChild(removeButton);
   return li;
 }
 
@@ -38,11 +41,43 @@ ul.addEventListener('change', (e) => {
 });
 
 ul.addEventListener('click', (e) => {
-    if (e.target.tagName === 'BUTTON') {
+    if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Remove') {
         const li = e.target.parentNode;
         const ul = li.parentNode;
         ul.removeChild(li);
+    } else if (e.target.tagName === 'BUTTON' && e.target.textContent === 'Edit') {
+                
     }
 });
 
+/*
 
+everything before edit is clicked
+
+<li>
+    John
+    <input type="checkbox" />
+    <button>edit</button>
+    <button>remove</button>
+</li>
+
+after edit is clicked
+
+<li>
+    <input type="text" value="John" />
+    <input type="checkbox" />
+    <button>edit</button>
+    <button>remove</button>
+</li>
+
+once save is complete it switches back
+
+*/
+
+/*
+steps complete
+1) add edit button
+2) make edit button not delete when clicked
+3) create function for edit button click
+
+*/
